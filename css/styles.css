@@ -107,3 +107,47 @@ header{
     flex-direction: row;
     flex-wrap: wrap;
 }
+.marca{
+  font-family: "Meie Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+.productsection{
+    display: flex;
+    flex-direction: row;
+    margin: 40px;
+    background-color: white;
+    border-radius: 20px;
+}
+.productinfo{
+    margin: 0px 0px 0px 20px;
+}
+.productimg{
+    width: 400px;
+    height: 300px;
+    margin: 20px;
+}
+.tags{
+    background-color: rgb(221, 232, 255);
+    border-radius: 5px;
+    width: max-content;
+    margin: 10px;
+    padding: 5px;
+}
+.tagsul{
+    display: flex;
+    flex-direction: row;
+}
+.comentarios{
+    margin: 20px;
+}
+.fecha{
+    text-align: right;
+    margin: 0px;
+}
+.comentario1{
+    background-color: rgb(221, 232, 255);
+    border-radius: 10px;
+    padding: 10px;
+    width: 100%;
+}
