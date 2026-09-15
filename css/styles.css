@@ -151,3 +151,54 @@ header{
     padding: 10px;
     width: 100%;
 }
+
+.formthing{
+    text-align: center;
+    font-size: 50px;
+    margin: 30px;
+
+}
+
+.formthing input{
+    font-size: 30px;
+}
+
+.formthing button{
+    font-size: 30px;
+}
+
+.formthing a{
+    color: black;
+}
+
+.formthing div{
+    margin-bottom: 30px;
+}
+
+.formthing2{
+    text-align: center;
+    font-size: 50px;
+    margin: 30px;
+
+}
+
+.formthing2 input{
+    font-size: 30px;
+}
+
+.formthing2 button{
+    font-size: 30px;
+}
+
+.formthing2 a{
+    color: black;
+}
+
+.formthing2 div{
+    margin-bottom: 15px;
+}
+
+input[type="checkbox"]{
+    width: 30px;
+    height: 30px;
+}
