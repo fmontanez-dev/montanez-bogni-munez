@@ -18,6 +18,7 @@ a {
 }
 header{
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     flex-direction: column;
     background-color: rgb(0, 24, 71);
@@ -31,6 +32,7 @@ header{
 }
 .loginregister{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: right;
     margin: 20px 40px 0px 0px;
@@ -38,6 +40,7 @@ header{
 }
 .logoyh1{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 .marg{
@@ -50,7 +53,8 @@ header{
     height: 20%;
 }
 .botonbuscar{
-    height: 20%;
+    height: 26%;
+    width: 60px;
 }
 .categoriasdiv{
     background-color: rgb(44, 65, 109);
@@ -62,10 +66,11 @@ header{
 }
 .categorias{
     color: white;
-    width: 100vw;
+    width: 200px;
 }
 .categoriasul{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
 }
 .categoriali{
@@ -107,6 +112,15 @@ header{
     flex-direction: row;
     flex-wrap: wrap;
 }
+.productosh2{
+    width: 100%;
+    margin: 20px;
+}
+.productostodos{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 .marca{
   font-family: "Meie Script", cursive;
   font-weight: 400;
@@ -114,6 +128,7 @@ header{
 }
 .productsection{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     margin: 40px;
     background-color: white;
@@ -136,6 +151,7 @@ header{
 }
 .tagsul{
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
 }
 .comentarios{
@@ -149,7 +165,14 @@ header{
     background-color: rgb(221, 232, 255);
     border-radius: 10px;
     padding: 10px;
-    width: 100%;
+    width: 600px;
+}
+.comentario2{
+    background-color: rgb(221, 232, 255);
+    border-radius: 10px;
+    padding: 10px;
+    width: 600px;
+    margin: 67px 0px 0px 0px
 }
 
 .formthing{
@@ -219,5 +242,6 @@ footer{
 
 .logothing{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
