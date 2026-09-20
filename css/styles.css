@@ -76,8 +76,9 @@ header{
 .categoriali{
     background-color: rgb(35, 51, 85);
     margin: 5px;
-    width: 50%;
+    width: 65%;
     justify-content: center;
+    font-size: 25px;
 }
 .producto{
     width: 300px;
@@ -226,7 +227,15 @@ input[type="checkbox"]{
     height: 30px;
 }
 
-form{
+.formthing{
+    background-color: antiquewhite;
+    border: 2px black solid;
+    padding: 5px;
+    border-radius: 8px;
+    height: 500px;
+}
+
+.formthing2{
     background-color: antiquewhite;
     border: 2px black solid;
     padding: 5px;
