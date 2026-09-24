@@ -22,7 +22,7 @@ header{
     justify-content: space-between;
     flex-direction: column;
     background-color: rgb(0, 24, 71);
-    height: 50%;
+    width: 100%;
 }
 .buscadorform{
     display: flex;
@@ -54,7 +54,7 @@ header{
 .buscador{
     height: 40%;
     padding: 10px;
-    width: 500px;
+    width: 80%;
 }
 .botonbuscar{
     height: 50%;
@@ -94,7 +94,7 @@ header{
 }
 .productoimg{
     width: 100%;
-    height: 200px;
+    height: 100%;
     margin: 15px 0px 0px 0px;
 }
 .mainindex{
@@ -145,8 +145,8 @@ header{
     margin: 0px 0px 0px 20px;
 }
 .productimg{
-    width: 400px;
-    height: 300px;
+    width: 50%;
+    height: 100%;
     margin: 20px;
 }
 .tags{
@@ -163,6 +163,7 @@ header{
 }
 .comentarios{
     margin: 20px;
+    flex-wrap: wrap;
 }
 .fecha{
     text-align: right;
@@ -172,13 +173,14 @@ header{
     background-color: rgb(221, 232, 255);
     border-radius: 10px;
     padding: 10px;
-    width: 600px;
+    width: 100%;
+    flex-wrap: wrap;c
 }
 .comentario2{
     background-color: rgb(221, 232, 255);
     border-radius: 10px;
     padding: 10px;
-    width: 600px;
+    width: 100%;
     margin: 67px 0px 0px 0px
 }
 
@@ -253,10 +255,36 @@ footer{
    text-align: center;
    background-color: rgb(0, 24, 71);
    color: white;
+   width: 100%;
 }
 
 .logothing{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+@media (max-width: 700px) {
+    .mainindex{
+        flex-direction: column;
+        margin: 20px 0px 0px 0px;
+    }
+    .categoriasdiv{
+        display: none;
+    }
+}
+@media (max-width: 400px) {
+    .mainindex{
+        flex-direction: column;
+        margin: 20px 0px 0px 0px;
+    }
+    .categoriasdiv{
+        display: none;
+    }
+}
+@media (max-width: 700px) {
+    .mainproduct{
+        flex-direction: column;
+        margin: 20px 0px 0px 0px;
+    }
+
 }
