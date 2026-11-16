@@ -314,4 +314,6 @@ label{
 input{
     border: black 3px solid;
 }
-
+.errorbuscador{
+    color: white;
+}
