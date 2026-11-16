@@ -1,33 +1,30 @@
-let phonesCategory = "https://dummyjson.com/products/category/smartphones";
+let url = "https://dummyjson.com/products/category/smartphones";
 
-let phoneSection = document.querySelector(".productos");
-
-let phones = "";
-
-fetch(phonesCategory)
-    .then(function (response) {
-        return response.json()
+fetch(url)
+    .then(function(response) {
+        return response.json();
     })
-    .then(function (data) {
-        console.log(data);
-        let phoneList = data.products
+    .then(function(data) {
+        let smartphones = data.products;
 
-        for (let i = 0; i < phoneList.length; i++) {
-            phones += `
+        let tarjetas = document.querySelectorAll(".productos .producto");
 
-    
-                <article>
-                <img src="${phoneList[i].thumbnail}" alt="${phoneList[i].title}">
-                <p> Model: ${ phoneList[i].title }</p>
-                </article >
-                
-                `
+        for (let i = 0; i < tarjetas.length; i++) {
+            if (smartphones[i]) {
+                let img = tarjetas[i].querySelector(".productoimg");
+                let titulo = tarjetas[i].querySelector(".phonetitle");
+                let parrafo = tarjetas[i].querySelector(".phoneparafo");
+                let precio = tarjetas[i].querySelector(".phoneprecio");
+                let linkDetalle = tarjetas[i].querySelector(".verdetalle");
+
+                img.src = smartphones[i].thumbnail;
+                img.alt = smartphones[i].title;
+                titulo.innerText = smartphones[i].title;
+                parrafo.innerText = smartphones[i].description; 
+                precio.innerText = "$" + smartphones[i].price;
+            }
         }
-      
-        phoneSection.innerHTML= phones
-
     })
-    .catch(function (error) {
+    .catch(function(error) {
         console.log("Error: " + error);
-    })
-
+    });
