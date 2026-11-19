@@ -47,3 +47,4 @@ formBuscador.addEventListener("submit", function(envio) {
         mensajeError.innerText = "";
     }
 });
+
