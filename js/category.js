@@ -1,34 +1,36 @@
-let url = "https://dummyjson.com/products/category/smartphones";
+let queryString = location.search;
+let params = new URLSearchParams(queryString);
+let categoriaElegida = params.get("category");
 
+let url = "https://dummyjson.com/products/category/" + categoriaElegida;
 
 fetch(url)
     .then(function(response) {
         return response.json();
     })
     .then(function(data) {
-        let smartphones = data.products;
+        console.log(data);
+        let productos = data.products;
 
+        let seccionProductos = document.querySelector(".productos");
 
-        let tarjetas = document.querySelectorAll(".productos .producto");
+        let contenidoHTML = `<h2 class="titulo-categoria">${categoriaElegida}</h2>`;
 
-
-        for (let i = 0; i < tarjetas.length; i++) {
-            if (smartphones[i]) {
-                let img = tarjetas[i].querySelector(".productoimg");
-                let titulo = tarjetas[i].querySelector(".phonetitle");
-                let parrafo = tarjetas[i].querySelector(".phoneparafo");
-                let precio = tarjetas[i].querySelector(".phoneprecio");
-                let linkDetalle = tarjetas[i].querySelector(".verdetalle");
-
-
-                img.src = smartphones[i].thumbnail;
-                img.alt = smartphones[i].title;
-                titulo.innerText = smartphones[i].title;
-                parrafo.innerText = smartphones[i].description;
-                precio.innerText = "$" + smartphones[i].price;
-                linkDetalle.href = "./product.html?id=" + smartphones[i].id;
-            }
+        for (let i = 0; i < productos.length; i++) {
+            contenidoHTML += `
+                <article class="producto">
+                    <div class="productodiv">
+                        <img src="${productos[i].thumbnail}" alt="${productos[i].title}" class="productoimg">
+                        <h3 class="phonetitle">${productos[i].title}</h3>
+                        <p class="phoneparafo">${productos[i].description}</p>
+                        <h3 class="phoneprecio">$${productos[i].price}</h3>
+                        <a href="./product.html?id=${productos[i].id}" class="verdetalle"> Ver Detalles </a>
+                    </div>
+                </article>
+            `;
         }
+
+        seccionProductos.innerHTML = contenidoHTML;
     })
     .catch(function(error) {
         console.log("Error: " + error);
@@ -39,10 +41,8 @@ let formBuscador = document.querySelector(".buscadorform");
 let inputBuscador = document.querySelector(".buscador");
 let mensajeError = document.querySelector(".errorbuscador");
 
-
 formBuscador.addEventListener("submit", function(envio) {
     let textoBuscado = inputBuscador.value;
-
 
     if (textoBuscado === "") {
         envio.preventDefault();
@@ -54,4 +54,3 @@ formBuscador.addEventListener("submit", function(envio) {
         mensajeError.innerText = "";
     }
 });
-
