@@ -1,93 +1,111 @@
-let formBuscador = document.querySelector(".buscadorform");
-let inputBuscador = document.querySelector(".buscador");
-let mensajeError = document.querySelector(".errorbuscador");
-
-formBuscador.addEventListener("submit", function(envio) {
-    let textoBuscado = inputBuscador.value;
-
-    if (textoBuscado === "") {
-        envio.preventDefault();
-        mensajeError.innerText = "El campo de búsqueda no puede estar vacío.";
-    } else if (textoBuscado.length < 3) {
-        envio.preventDefault();
-        mensajeError.innerText = "Por favor, ingresá al menos 3 caracteres para buscar.";
-    } else {
-        mensajeError.innerText = "";
-    }
-});
-
 let queryString = location.search;
-let params = new URLSearchParams(queryString);
-let idProducto = params.get("id");
-
-let url = "https://dummyjson.com/products/" + idProducto;
-
+let queryStringObj = new URLSearchParams(queryString);
+let idProduct = queryStringObj.get("id")
+let url = `https://dummyjson.com/products/${idProduct}`;
 fetch(url)
-    .then(function(response) {
-        return response.json();
+    .then(function (response) {
+        return response.json()
     })
-    .then(function(data) {
-        console.log(data);
-
-        let img = document.querySelector(".productimg");
-        let marca = document.querySelector(".marca");
-        let modelo = document.querySelector(".modelo");
-        let linkCategoria = document.querySelector(".link-categoria");
-        let precio = document.querySelector(".precio");
-        let stock = document.querySelector(".stock");
-        let descripcion = document.querySelector(".descripcion");
-
-        img.src = data.thumbnail;
-        img.alt = data.title;
-
-        if (data.brand) {
-            marca.innerText = data.brand;
-        } else {
-            marca.innerText = "Genérica";
+    .then(function (data) {
+        console.log(data)
+        let nombre = document.querySelector(".nombre")
+        nombre.innerText = data.title
+        let marca = document.querySelector(".marca")
+        marca.innerText = data.brand
+        let precio = document.querySelector(".precio")
+        precio.innerText = data.price
+        let stock = document.querySelector(".stock")
+        stock.innerText = data.stock
+        let desc = document.querySelector(".descripcion")
+        desc.innerText = data.description
+        let tags = document.querySelector(".tags")
+        for (let i = 0; i < data.tags.length && i < 3; i++) {
+            tags.innerHTML = `<li>${data.tags[i]}</li>`;
         }
 
-        modelo.innerText = data.title;
 
-        linkCategoria.innerText = data.category;
-        linkCategoria.href = "./category.html?category=" + data.category;
+        let imagen = document.querySelector(".imagen")
+        imagen.src = data.thumbnail
 
-        precio.innerText = "$" + data.price;
-        stock.innerText = "Stock: " + data.stock;
-        descripcion.innerText = data.description;
 
-        let listaTags = document.querySelectorAll(".tagsul .tags");
+        let reviews = document.querySelector(".comentario1")
+        let reviews2 = document.querySelector(".comentario2")
+        for (let i = 0; i < data.reviews.length && i < 2; i++) {
 
-        for (let i = 0; i < listaTags.length; i++) {
-            if (data.tags[i]) {
-                listaTags[i].innerText = data.tags[i];
-            } else {
-                listaTags[i].style.display = "none";
-            }
-        }
 
-        let secciones = document.querySelectorAll(".productsection");
-        let seccionComentarios = secciones[1];
+            reviews.innerHTML =
+                `
 
-        let comentariosHTML = "<h2>Comentarios</h2>";
-        let reviews = data.reviews;
 
-        for (let i = 0; i < reviews.length; i++) {
-            let fechaLimpia = reviews[i].date.slice(0, 10);
+            <article>
+                <p>
+                    nombre:${data.reviews[i].reviewerName}
+                </p>
 
-            comentariosHTML += `
-                <div class="comentarios">
-                    <div class="comentario1">
-                        <p class="fecha">${fechaLimpia}</p>
-                        <p class="nombre"><b>${reviews[i].reviewerName}</b></p>
-                        <p>Rating: ${reviews[i].rating} / 5 ⭐</p>
-                        <p class="opinion">${reviews[i].comment}</p>
-                    </div>
-                </div>
+
+                <p>
+                    fetcha:${data.reviews[i].date}
+                </p>
+                <p>
+                    opinion:${data.reviews[i].comment}
+                </p>
+                <p>
+                    rating:${data.reviews[i].rating}
+                </p>
+
+
+            </article>
             `;
         }
 
-        seccionComentarios.innerHTML = comentariosHTML;
+
+
+
+
+
+
+
+
+
+
+
+        for (let i = 1; i < data.reviews.length && i < 3; i++) {
+
+
+            reviews2.innerHTML =
+                `
+
+
+            <article>
+                <p>
+                    nombre:${data.reviews[i].reviewerName}
+                </p>
+
+
+                <p>
+                    fetcha:${data.reviews[i].date}
+                </p>
+                <p>
+                    opinion:${data.reviews[i].comment}
+                </p>
+                <p>
+                    rating:${data.reviews[i].rating}
+                </p>
+
+
+            </article>
+            `;
+        }
+
+
     })
-    .catch(function(error) {
+    .catch(function (error) {
         console.log("Error: " + error);
-    });
+    })
+
+
+
+
+
+
+
